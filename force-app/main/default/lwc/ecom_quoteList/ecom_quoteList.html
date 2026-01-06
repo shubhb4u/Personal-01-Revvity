@@ -8,49 +8,64 @@
 
       <!-- Segmented pill made of two buttons -->
       <div class="seg-switch slds-m-bottom_small" role="group" aria-label="Quote status">
-        <button type="button" class="seg-btn is-active" data-segment="active" aria-pressed="true">
+        <button type="button" class="seg-btn is-active" data-segment="active" aria-pressed="true" onclick={handleActiveQuotes}>
           Active Quotes
         </button>
 
-        <button type="button" class="seg-btn is-inactive" data-segment="expired" aria-pressed="false">
+        <button type="button" class="seg-btn is-inactive" data-segment="expired" aria-pressed="false" onclick={handleExpiredQuotes}>
           Expired Quotes
         </button>
       </div>
     </header>
 
-    <!-- Toolbar -->
-    <div class="slds-grid slds-wrap slds-m-vertical_medium slds-grid_vertical-align-center">
-      <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_x-small">
-        <div class="slds-text-body_regular slds-text-color_default slds-m-right_small">
-          <strong>5 out of 20 Quotes</strong>
-        </div>
+    <!-- Toolbar container -->
+    <div class="slds-grid slds-wrap slds-m-vertical_medium">
+
+      <!-- ===== Row 1: "Find a quote" (right aligned, its own row) ===== -->
+      <div class="slds-col slds-size_1-of-1 slds-text-align_right slds-m-bottom_small">
+        <a href="javascript:void(0)" class="ecomm-link">
+          <span class="slds-icon_container slds-icon-utility-search ecomm-inline-icon slds-m-right_x-small"
+            title="Search" aria-hidden="true"></span>
+          Find a quote
+        </a>
       </div>
 
-      <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-text-align_right">
-        <div class="slds-grid slds-grid_align-end slds-grid_vertical-align-center slds-gutters_small">
+      <!-- ===== Row 2: Count (left) + Sort combobox (right) ===== -->
+      <div class="slds-col slds-size_1-of-1">
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center">
 
-          <!-- Find a quote (accent link with icon) -->
-          <a href="javascript:void(0)" class="ecomm-link ecomm-link--accent slds-m-right_large">
-            <span class="slds-icon_container slds-icon-utility-search ecomm-inline-icon slds-m-right_x-small"
-              title="Search" aria-hidden="true"></span>
-            Find a quote
-          </a>
-          <!-- Simple Sort (minimal markup, no SLDS form classes) -->
-          <div class="sort-box slds-m-right_medium" aria-label="Sort by">
-            <span class="sort-label">Sort by:</span>
-            <select id="sortSelect" name="sorted" aria-label="Sort by">
-              <option value="newest" selected>Newest</option>
-              <option value="oldest">Oldest</option>
-              <option value="numberOfItems">Number of Items</option>
-              <option value="quoteTotal">Quote Total</option>
-            </select>
+          <!-- Left column: Count -->
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+            <template if:true={isQuoteHistoryPage}>
+              <p class="slds-m-bottom_none slds-m-top_x-small">
+                <template if:true={totalQuotes}>
+                  <span class="slds-text-heading_small slds-m-right_x-small">
+                    <span if:true={fromRecords}>{fromRecords}-</span>{toRecords}
+                  </span>
+                  <span class="slds-text-heading_small slds-m-right_x-small">out of {totalQuotes} Quotes</span>
+                </template>
+              </p>
+            </template>
+          </div>
+
+          <!-- Right column: Sort combobox (right-aligned, compact width) -->
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-text-align_right">
+            <template if:true={isQuoteHistoryPage}>
+              <div class="slds-grid slds-grid_align-end">
+                <div
+                  class="slds-form slds-form_horizontal slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_5-of-12">
+                  <lightning-combobox name="Sort" label="Sort" value={sortValue} placeholder="Sort by:"
+                    options={sortOption} variant="label-hidden" onchange={handleSortChange}>
+                  </lightning-combobox>
+                </div>
+              </div>
+            </template>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Quote List -->
-
     <template for:each={quotesToDisplay} for:item="quote">
       <div key={quote.quoteNumber} class="slds-card ecomm-card slds-m-bottom_small">
         <div class="slds-card__header slds-grid">
@@ -70,7 +85,7 @@
           <div class="slds-grid slds-wrap slds-gutters">
             <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
               <div class="ecomm-label">Valid until</div>
-              <div class="ecomm-value">{quote.expiresOn}</div>
+              <div class={quote.statusClass}>{quote.expiresOn}</div>
             </div>
             <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
               <div class="ecomm-label">Total</div>
@@ -93,13 +108,15 @@
     </template>
 
     <!-- Paginator -->
-    <template if:true={isLoadMoreEnabled}>
-      <div class="slds-grid slds-wrap">
-        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1">
-          <c-ecom_paginator ongotopage={pageChanged} page-size={defaultListSize} current-page-number={currentPageNumber}
-            total-records={totalQuotes}></c-ecom_paginator>
+    <div class="slds-m-top_large">
+      <template if:true={isLoadMoreEnabled}>
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-1">
+            <c-ecom_paginator ongotopage={pageChanged} page-size={defaultListSize}
+              current-page-number={currentPageNumber} total-records={totalQuotes}></c-ecom_paginator>
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
+    </div>
   </div>
 </template>

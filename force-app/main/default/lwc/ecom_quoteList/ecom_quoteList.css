@@ -1,12 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap'); */
-
-
 :host {
-  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-               Roboto, Helvetica, Arial, sans-serif;
-
   /* Palette */
-  --ecomm-text: #1f2937;             
+  --ecomm-text: #000000;             
   --ecomm-subtle: #6b7280;           
   --ecomm-border: #e5e7eb;           
   --ecomm-border-strong: #d1d5db;    
@@ -41,7 +35,7 @@
 /* Base container */
 .ecomm {
   color: var(--ecomm-text);
-  font-family: inherit; 
+  font-family: Hanken Grotesk; 
 }
 
 /* ================================================
@@ -54,8 +48,7 @@
   border: 1px solid var(--ecomm-border-strong);
   border-radius: var(--ecomm-radius-pill);
   overflow: hidden;
-  /* Make the pill itself a light gray strip so inactive looks gray */
-  background: #e6e6e9; /* pill track */
+  background: #e6e6e9; 
 }
 
 /* Segments (buttons) */
@@ -65,7 +58,7 @@
   font-size: 14px;
   line-height: 1.2;
   color: var(--ecomm-text);
-  background: transparent;   /* default transparent so it shows pill track */
+  background: transparent; 
   border: none;
   cursor: pointer;
   user-select: none;
@@ -78,14 +71,14 @@
 
 /* ACTIVE: must match the container (white) */
 .seg-btn.is-active {
-  background: var(--ecomm-bg); /* typically #ffffff */
+  background: var(--ecomm-bg);
   color: var(--ecomm-text);
   font-weight: 600;
 }
 
 /* INACTIVE: show the gray track color and subtle text */
 .seg-btn.is-inactive {
-  background: transparent;      /* shows the pill track (#e6e6e9) */
+  background: transparent; 
   color: var(--ecomm-subtle);
 }
 
@@ -94,7 +87,7 @@
 .seg-btn:focus-visible { outline: 2px solid var(--revvity-orchid); outline-offset: -2px; }
 
 /* Ensure the pill sits under the title on a new row if inside the header grid */
-.slds-grid.slds-wrap > .seg-switch {  /* NOTE: use literal '>' not '&gt;' */
+.slds-grid.slds-wrap > .seg-switch {  
   flex: 1 1 100%;
   order: 2;
   margin-top: 8px;
@@ -113,8 +106,8 @@
    ================================================ */
 .slds-col.slds-text-align_right > .slds-grid {
   display: flex;
-  flex-direction: column;    /* stack */
-  align-items: flex-end;     /* right align */
+  flex-direction: column;   
+  align-items: flex-end;    
   gap: 10px;
 }
 
@@ -174,6 +167,9 @@
   color: var(--ecomm-text);
 }
 
+.sort-combobox-align{
+    width: 100%;
+}
 .sort-box select {
   font-size: 14px;
   color: var(--ecomm-text);
@@ -252,13 +248,12 @@
 /* Labels & values */
 .ecomm-label {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--ecomm-subtle);
-  margin-bottom: 4px;
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 .ecomm-value {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--ecomm-text);
 }
 .ecomm-value--danger,
