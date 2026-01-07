@@ -205,68 +205,6 @@
   align-items: center;
 }
 
-/* Card header layout - responsive */
-.ecomm-card-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.ecomm-quote-number-col {
-  flex: 1 1 auto;
-  min-width: 140px;
-  word-break: break-word;
-}
-
-.ecomm-button-col {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  flex-basis: 100%;
-  padding-top: 8px;
-  order: 3;
-}
-
-/* Mobile: keep button below on its own row */
-@media (max-width: 767px) {
-  .ecomm-card-header {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-  
-  .ecomm-quote-number-col {
-    flex: 1 1 auto;
-    min-width: 140px;
-  }
-  
-  .ecomm-button-col {
-    width: 100%;
-    padding-top: 8px;
-  }
-}
-
-/* On tablet and larger, button on same line as quote number */
-@media (min-width: 768px) {
-  .ecomm-card-header {
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .ecomm-quote-number-col {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  
-  .ecomm-button-col {
-    width: auto;
-    padding-top: 0;
-    flex: 0 0 auto;
-    order: 0;
-  }
-}
-
 .ecomm-number { font-weight: 700; }
 
 /* Body grid — keep neat gaps */
@@ -275,95 +213,35 @@
   row-gap: 8px;
 }
 
-/* Card body grid container */
-.ecomm-card-body-grid {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-  align-items: flex-start;
-}
-
-/* Field columns - default responsive */
-.ecomm-field-col {
-  flex: 1 1 100%;
-  min-width: 100px;
-}
-
-/* Details link column */
-.ecomm-details-link {
-  flex: 1 1 100%;
-  min-width: 100px;
-  order: 10;
-  padding-top: 8px;
-  margin-top: 4px;
-  border-top: 1px solid var(--ecomm-border);
-}
-
-/* Mobile: 2 columns with proper wrapping */
-@media (max-width: 479px) {
-  .ecomm-card-body-grid {
-    gap: 12px 12px;
-  }
-  
-  .ecomm-field-col {
-    flex: 0 1 calc(50% - 6px);
-    min-width: 70px;
-  }
-  
-  .ecomm-details-link {
-    flex: 1 1 100%;
-    order: 10;
-    margin-top: 8px;
-    padding-top: 8px;
-  }
-}
-
-/* Tablet: flexible layout, 2-3 fields per row */
-@media (min-width: 480px) and (max-width: 767px) {
-  .ecomm-card-body-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .ecomm-field-col {
-    flex: 0 1 calc(50% - 8px);
-    min-width: 110px;
-  }
-  
-  .ecomm-details-link {
-    flex: 1 1 100%;
-    order: 10;
-    border-top: 1px solid var(--ecomm-border);
-    padding-top: 12px;
-    margin-top: 8px;
-  }
-}
-
-/* Desktop behavior: fields in single row */
+/* Desktop behavior: 4 equal columns + right-aligned "View details" cell */
 @media (min-width: 768px) {
-  .ecomm-card-body-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 12px;
+  .slds-card__body_inner .slds-grid {
+    flex-wrap: nowrap;       /* keep on one line */
     align-items: center;
   }
 
-  /* Four fields take equal space */
-  .ecomm-field-col {
-    flex: 1 1 20%;
-    min-width: 100px;
+  /* Four fields (exclude the link cell) */
+  .slds-card__body_inner .slds-grid .slds-col:not(.ecomm-details-link) {
+    flex: 1 1 25%;
+    max-width: 25%;
+    min-width: 140px;
   }
 
   /* The "View details" cell: non-growing, far right */
   .ecomm-details-link {
+    margin-right: 12px;
     flex: 0 0 auto;
     white-space: nowrap;
-    order: 0;
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--revvity-orchid);   
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .ecomm-details-link:hover {
+    color: var(--revvity-orchid-600);
+    text-decoration: underline;
   }
 }
 
@@ -381,8 +259,6 @@
 .ecomm-value--danger,
 .ecomm-status--expired { color: var(--ecomm-danger); }
 .ecomm-status--active { color: var(--ecomm-success); }
-
-
 
 /* ================================================
    Buttons — brand primary (no SLDS)
@@ -437,105 +313,9 @@
   100% { opacity: 1; }
 }
 
-
-/* ==============================================
-   Buttons — brand secondary (outlined pill)
-   ============================================== */
-.btn-secondary {
-  background-color: transparent;                  /* ghost / outlined */
-  color: var(--revvity-orchid);                   /* purple text */
-  border: 2px solid var(--revvity-orchid);        /* purple outline */
-  border-radius: 24px;                            /* pill shape */
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  cursor: pointer;
-
-  /* Micro-interactions (same rhythm as primary) */
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);   /* subtler than primary */
-  transition:
-    color 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    transform 100ms ease;
-}
-
-/* Hover: slightly darker outline & text; soft shadow */
-.btn-secondary:hover {
-  color: var(--revvity-orchid-600);
-  border-color: var(--revvity-orchid-600);
-  background-color: rgba(127, 3, 176, 0.06);      /* faint purple wash */
-  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.12);
-}
-
-/* Focus-visible: accessible ring consistent with primary */
-.btn-secondary:focus-visible {
-  outline: 3px solid rgba(127, 3, 176, 0.35);
-  outline-offset: 2px;
-}
-
-/* Active: press feedback + dissolve */
-.btn-secondary:active {
-  transform: translateY(1px);
-  animation: btn-dissolve 300ms ease-out;
-}
-
-/* Disabled: reduce contrast, remove shadow */
-.btn-secondary[disabled] {
-  color: color-mix(in srgb, var(--revvity-orchid), #000 60%);  /* muted purple */
-  border-color: var(--ecomm-border-strong);
-  background-color: transparent;
-  opacity: 0.55;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* Optional size variants */
-.btn-secondary.btn-sm {
-  padding: 8px 14px;
-  font-size: 13px;
-}
-
-.btn-secondary.btn-lg {
-  padding: 12px 22px;
-  font-size: 15px;
-}
-
-/* Optional full-width */
-.btn-secondary.is-full {
-  width: 100%;
-}
-
-/* Reuse the same dissolve animation you already have */
-@keyframes btn-dissolve {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.85; }
-  100% { opacity: 1; }
-}
-
-
 /* ================================================
    Minor responsive tweak
    ================================================ */
 @media (max-width: 860px) {
   .seg-switch { max-width: 640px; }
-}
-
-/* Details link additional styles for hover/focus */
-.ecomm-details-link {
-  color: var(--revvity-orchid);   
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.ecomm-details-link:hover {
-  color: var(--revvity-orchid-600);
-  text-decoration: underline;
-}
-
-.ecomm-details-link:focus-visible {
-  outline: 2px solid var(--revvity-orchid);
-  outline-offset: 2px;
 }

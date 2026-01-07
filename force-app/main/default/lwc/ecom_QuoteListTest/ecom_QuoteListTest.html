@@ -8,13 +8,11 @@
 
       <!-- Segmented pill made of two buttons -->
       <div class="seg-switch slds-m-bottom_small" role="group" aria-label="Quote status">
-        <button type="button" class="seg-btn is-active" data-segment="active" aria-pressed="true"
-          onclick={handleActiveQuotes}>
+        <button type="button" class="seg-btn is-active" data-segment="active" aria-pressed="true" onclick={handleActiveQuotes}>
           Active Quotes
         </button>
 
-        <button type="button" class="seg-btn is-inactive" data-segment="expired" aria-pressed="false"
-          onclick={handleExpiredQuotes}>
+        <button type="button" class="seg-btn is-inactive" data-segment="expired" aria-pressed="false" onclick={handleExpiredQuotes}>
           Expired Quotes
         </button>
       </div>
@@ -50,11 +48,12 @@
             </template>
           </div>
 
-          <!-- Right column: Sort combobox (right aligned) -->
-          <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+          <!-- Right column: Sort combobox (right-aligned, compact width) -->
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-text-align_right">
             <template if:true={isQuoteHistoryPage}>
-              <div class="slds-grid slds-wrap slds-grid_align-end">
-                <div class="slds-col slds-size_auto">
+              <div class="slds-grid slds-grid_align-end">
+                <div
+                  class="slds-form slds-form_horizontal slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_5-of-12">
                   <lightning-combobox name="Sort" label="Sort" value={sortValue} placeholder="Sort by:"
                     options={sortOption} variant="label-hidden" onchange={handleSortChange}>
                   </lightning-combobox>
@@ -69,58 +68,38 @@
     <!-- Quote List -->
     <template for:each={quotesToDisplay} for:item="quote">
       <div key={quote.quoteNumber} class="slds-card ecomm-card slds-m-bottom_small">
-
-        <div class="slds-card__header slds-grid slds-wrap slds-grid_vertical-align-center ecomm-card-header">
-          <!-- Left: Quote number -->
-          <div class="ecomm-quote-number-col">
-            <header class="slds-media slds-media_center slds-has-flexi-truncate">
-              <h2 class="slds-card__header-title slds-truncate">
-                <strong>Quote number: </strong>
-                <span class="ecomm-number">{quote.quoteNumber}</span>
-              </h2>
-            </header>
-          </div>
-
-          <!-- Right: action button, right aligned -->
-          <div class="ecomm-button-col">
-            <template lwc:if={isActiveSelected}>
-              <button type="button" class="btn-primary">Add quote to Cart</button>
-            </template>
-            <template lwc:if={isExpiredSelected}>
-              <button type="button" class="btn-secondary">Request again</button>
-            </template>
-          </div>
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <h2 class="slds-card__header-title">
+              <span class="slds-truncate" title={quote.quoteNumber}>
+                <strong>Quote number: </strong> <span class="ecomm-number">{quote.quoteNumber}</span>
+              </span>
+            </h2>
+          </header>
+          <button type="button" class="btn-primary">
+            Add quote to Cart
+          </button>
         </div>
 
         <div class="slds-card__body slds-card__body_inner">
-          <div class="ecomm-card-body-grid">
-
-            <!-- Valid until -->
-            <div class="ecomm-field-col">
+          <div class="slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-5">
               <div class="ecomm-label">Valid until</div>
-              <div class="ecomm-value">{quote.expiresOn}</div>
+              <div class={quote.statusClass}>{quote.expiresOn}</div>
             </div>
-
-            <!-- Total -->
-            <div class="ecomm-field-col">
+            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-5">
               <div class="ecomm-label">Total</div>
               <div class="ecomm-value">{quote.totalAmount}</div>
             </div>
-
-            <!-- Items -->
-            <div class="ecomm-field-col">
+            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-5">
               <div class="ecomm-label">Items</div>
               <div class="ecomm-value">{quote.items}</div>
             </div>
-
-            <!-- Status -->
-            <div class="ecomm-field-col">
+            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-5">
               <div class="ecomm-label">Status</div>
               <div class={quote.statusClass}>{quote.status}</div>
             </div>
-
-            <!-- View details link -->
-            <div class="ecomm-details-link">
+            <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-5">
               <a href="javascript:void(0)" class="ecomm-link">View quote details</a>
             </div>
           </div>
@@ -129,12 +108,23 @@
     </template>
 
     <!-- Paginator -->
-    <div class=" slds-m-top_large">
+    <!-- <div class="slds-m-top_large">
       <template if:true={isLoadMoreEnabled}>
         <div class="slds-grid slds-wrap">
           <div class="slds-col slds-size_1-of-1">
             <c-ecom_paginator ongotopage={pageChanged} page-size={defaultListSize}
               current-page-number={currentPageNumber} total-records={totalQuotes}></c-ecom_paginator>
+          </div>
+        </div>
+      </template>
+    </div> -->
+
+    <div class="slds-m-top_large">
+      <template if:true={isLoadMoreEnabled}>
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-1">
+            <c-ecom_-quote-paginator ongotopage={pageChanged} page-size={defaultListSize}
+              current-page-number={currentPageNumber} total-records={totalQuotes}></c-ecom_-quote-paginator>
           </div>
         </div>
       </template>
