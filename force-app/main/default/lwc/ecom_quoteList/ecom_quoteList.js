@@ -3,7 +3,7 @@ import { LightningElement, track, api } from 'lwc';
 export default class Ecom_quoteList extends LightningElement {
 
     @track Quotes = [
-        { expiresOn: '2026-12-31', quoteNumber: 'Q-1001', totalAmount: '$1,200.00', items: 5, status: 'Active', createdDate: '2026-12-31' },
+        { expiresOn: '2026-06-31', quoteNumber: 'Q-1001', totalAmount: '$1,200.00', items: 5, status: 'Active', createdDate: '2026-06-31' },
         { expiresOn: '2026-01-15', quoteNumber: 'Q-1002', totalAmount: '$850.00', items: 3, status: 'Active', createdDate: '2026-01-15' },
         { expiresOn: '2026-02-28', quoteNumber: 'Q-1003', totalAmount: '$2,450.00', items: 8, status: 'Active', createdDate: '2026-02-28' },
         { expiresOn: '2026-03-31', quoteNumber: 'Q-1004', totalAmount: '$800.00', items: 6, status: 'Active', createdDate: '2026-03-31' },
@@ -15,7 +15,7 @@ export default class Ecom_quoteList extends LightningElement {
         { expiresOn: '2024-09-30', quoteNumber: 'Q-1010', totalAmount: '123.00', items: 34, status: 'Expired', createdDate: '2024-09-30' },
         { expiresOn: '2024-10-31', quoteNumber: 'Q-1011', totalAmount: '111.00', items: 52, status: 'Expired', createdDate: '2024-10-31' },
         { expiresOn: '2024-11-30', quoteNumber: 'Q-1012', totalAmount: '1324.00', items: 45, status: 'Expired', createdDate: '2024-11-30' },
-        { expiresOn: '2024-12-31', quoteNumber: 'Q-1013', totalAmount: '543.00', items: 23, status: 'Expired', createdDate: '2024-12-31' },
+        { expiresOn: '2024-06-31', quoteNumber: 'Q-1013', totalAmount: '543.00', items: 23, status: 'Expired', createdDate: '2024-06-31' },
         { expiresOn: '2024-01-31', quoteNumber: 'Q-1014', totalAmount: '123.00', items: 5, status: 'Expired', createdDate: '2024-01-31' },
         { expiresOn: '2024-02-28', quoteNumber: 'Q-1015', totalAmount: '678.00', items: 12, status: 'Expired', createdDate: '2024-02-28' },
         { expiresOn: '2024-03-31', quoteNumber: 'Q-1016', totalAmount: '123.00', items: 5, status: 'Expired', createdDate: '2024-03-31' },
@@ -27,7 +27,7 @@ export default class Ecom_quoteList extends LightningElement {
         { expiresOn: '2024-09-30', quoteNumber: 'Q-1022', totalAmount: '567.00', items: 8, status: 'Expired', createdDate: '2024-09-30' },
         { expiresOn: '2024-10-31', quoteNumber: 'Q-1023', totalAmount: '890.00', items: 10, status: 'Expired', createdDate: '2024-10-31' },
         { expiresOn: '2024-11-30', quoteNumber: 'Q-1024', totalAmount: '345.00', items: 6, status: 'Expired', createdDate: '2024-11-30' },
-        { expiresOn: '2024-12-31', quoteNumber: 'Q-1025', totalAmount: '678.00', items: 14, status: 'Expired', createdDate: '2024-12-31' },
+        { expiresOn: '2024-06-31', quoteNumber: 'Q-1025', totalAmount: '678.00', items: 14, status: 'Expired', createdDate: '2024-06-31' },
         { expiresOn: '2025-01-31', quoteNumber: 'Q-1026', totalAmount: '123.00', items: 5, status: 'Expired', createdDate: '2025-01-31' },
         { expiresOn: '2025-02-28', quoteNumber: 'Q-1027', totalAmount: '456.00', items: 9, status: 'Expired', createdDate: '2025-02-28' },
         { expiresOn: '2025-03-31', quoteNumber: 'Q-1028', totalAmount: '789.00', items: 13, status: 'Expired', createdDate: '2025-03-31' },
@@ -39,14 +39,14 @@ export default class Ecom_quoteList extends LightningElement {
         { expiresOn: '2026-09-30', quoteNumber: 'Q-1034', totalAmount: '678.00', items: 9, status: 'Active', createdDate: '2026-09-30' },
         { expiresOn: '2026-10-31', quoteNumber: 'Q-1035', totalAmount: '234.00', items: 8, status: 'Active', createdDate: '2026-10-31' },
         { expiresOn: '2026-11-30', quoteNumber: 'Q-1036', totalAmount: '567.00', items: 12, status: 'Active', createdDate: '2026-11-30' },
-        { expiresOn: '2026-12-31', quoteNumber: 'Q-1037', totalAmount: '890.00', items: 15, status: 'Active', createdDate: '2026-12-31' },
+        { expiresOn: '2026-06-31', quoteNumber: 'Q-1037', totalAmount: '890.00', items: 15, status: 'Active', createdDate: '2026-06-31' },
         { expiresOn: '2025-06-30', quoteNumber: 'Q-1038', totalAmount: '123.00', items: 5, status: 'Active', createdDate: '2025-06-30' },
         { expiresOn: '2025-07-31', quoteNumber: 'Q-1039', totalAmount: '456.00', items: 8, status: 'Active', createdDate: '2025-07-31' },
         { expiresOn: '2025-08-31', quoteNumber: 'Q-1040', totalAmount: '789.00', items: 12, status: 'Active', createdDate: '2025-08-31' },
         { expiresOn: '2025-09-30', quoteNumber: 'Q-1041', totalAmount: '234.00', items: 6, status: 'Active', createdDate: '2025-09-30' },
         { expiresOn: '2025-10-31', quoteNumber: 'Q-1042', totalAmount: '567.00', items: 9, status: 'Active', createdDate: '2025-10-31' },
         { expiresOn: '2025-11-30', quoteNumber: 'Q-1043', totalAmount: '890.00', items: 14, status: 'Active', createdDate: '2025-11-30' },
-        { expiresOn: '2025-12-31', quoteNumber: 'Q-1044', totalAmount: '345.00', items: 7, status: 'Active', createdDate: '2025-12-31' }
+        { expiresOn: '2025-06-31', quoteNumber: 'Q-1044', totalAmount: '345.00', items: 7, status: 'Active', createdDate: '2025-06-31' }
     ];
 
     // PAGINATION changes---------------------------------------
@@ -66,54 +66,70 @@ export default class Ecom_quoteList extends LightningElement {
     isQuoteHistoryPage = true;
     totalQuotes = 0;
     showQuotes = false;
+    isActiveSelected = false;
+    isExpiredSelected = false;
 
     connectedCallback() {
-        
+
         this.allQuotes = (this.Quotes || []).map(q => {
             const s = (q.status || '').toLowerCase();
+            const expiresOn = this.formatDateForUI(q.expiresOn);
             return {
-            ...q,
-            _status: s,
-            statusClass: this.getStatusClass(s)
+                ...q,
+                _status: s,
+                statusClass: this.getStatusClass(s),
+                expiresOn: expiresOn
             };
         });
-        
+
         // Precompute segments
-        this.activeQuotes  = this.allQuotes.filter(q => q._status === 'active');
+        this.activeQuotes = this.allQuotes.filter(q => q._status === 'active');
         this.expiredQuotes = this.allQuotes.filter(q => q._status === 'expired');
 
-        this.myQuotes = this.allQuotes.filter(quote => quote.status === 'Active');
+        this.applySegment('active');
+    }
+
+    get isLoadMoreEnabled() {
+        return this.isLoadMore && this.isQuoteHistoryPage;
+    }
+
+    getStatusClass(status) {
+        const s = (status || '').toLowerCase();
+        return 'ecomm-value ' + (
+            s === 'active' ? 'ecomm-status--active' :
+                s === 'expired' ? 'ecomm-status--expired' :
+                    'ecomm-status--neutral'
+        );
+    }
+
+    applySegment(segment) {
+        this.quotesToDisplay = [];
+        if (segment === 'active') {
+            this.isActiveSelected = true;
+            this.isExpiredSelected = false;
+            this.myQuotes = this.activeQuotes;
+        } else if (segment === 'expired') {
+            this.isActiveSelected = false;
+            this.isExpiredSelected = true;
+            this.myQuotes = this.expiredQuotes;
+        }
+
+        this.sortValue = 'newest';
+        this.sortData('createdDate', 'desc');
+
         this.totalQuotes = this.myQuotes.length;
-        
         //update default size
         this.nextLoadCount = this.defaultListSize;
         if (this.defaultListSize > this.totalQuotes) {
             this.nextLoadCount = this.totalQuotes;
             this.toRecords = this.totalQuotes;
         }
-
-        for (let i = 0; i < this.nextLoadCount; i++) {
+        for (let i = 0; i < this.defaultListSize; i++) {
             this.quotesToDisplay.push(this.myQuotes[i]);
-        }
-        if (this.quotesToDisplay.length) {
-            this.showQuotes = true;
         }
         if (this.totalQuotes > this.defaultListSize) {
             this.isLoadMore = true;
         }
-    }
-
-    get isLoadMoreEnabled() {
-        return this.isLoadMore && this.isQuoteHistoryPage;
-    }
-    
-    getStatusClass(status) {
-        const s = (status || '').toLowerCase();
-        return 'ecomm-value ' + (
-            s === 'active'  ? 'ecomm-status--active'  :
-            s === 'expired' ? 'ecomm-status--expired' :
-                            'ecomm-status--neutral'
-        );
     }
 
     pageChanged(event) {
@@ -132,37 +148,38 @@ export default class Ecom_quoteList extends LightningElement {
 
     get sortOption() {
         return [
-            { label: 'Sort by: Oldest', value: 'oldest' }, 
+            { label: 'Sort by: Oldest', value: 'oldest' },
             { label: 'Sort by: Newest', value: 'newest' },
-            { label: 'Sort by: Number of Items', value: 'items' }, 
-            { label: 'Sort by: Quote Total', value: 'totalAmount' } 
+            { label: 'Sort by: Number of Items', value: 'items' },
+            { label: 'Sort by: Quote Total', value: 'totalAmount' }
         ];
     }
 
     handleSortChange(event) {
         let sortBy = event.detail.value;
+        this.sortValue = event.detail.value;
 
         if (sortBy == 'oldest') {
             this.sortData('createdDate', 'asc');
         }
         if (sortBy == 'newest') {
-            this.sortData('createdDate', 'desc'); 
+            this.sortData('createdDate', 'desc');
         }
         if (sortBy == 'items') {
-            this.sortData('items', 'desc'); 
+            this.sortData('items', 'desc');
         }
         if (sortBy == 'totalAmount') {
-            this.sortData('totalAmount', 'desc'); 
+            this.sortData('totalAmount', 'desc');
         }
         this.currentPageNumber = 1;
         this.fromRecords = 0;
-        this.toRecords = this.defaultListSize; 
+        this.toRecords = this.defaultListSize;
         this.quotesToDisplay = [];
         //update default size
         this.nextLoadCount = this.defaultListSize;
         if (this.defaultListSize > this.totalQuotes) {
             this.nextLoadCount = this.totalQuotes;
-            this.toRecords = this.totalQuotes; 
+            this.toRecords = this.totalQuotes;
         }
 
         for (let i = 0; i < this.nextLoadCount; i++) {
@@ -191,52 +208,31 @@ export default class Ecom_quoteList extends LightningElement {
         this.myQuotes = parseData;
     }
 
-
     // Segmented button changes---------------------------------------
-
     handleActiveQuotes(event) {
-        this.quotesToDisplay = [];
-        this.myQuotes = this.Quotes.filter(quote => quote.status === 'Active');
-        this.totalQuotes = this.myQuotes.length;
-        
-        //update default size
-        this.nextLoadCount = this.defaultListSize;
-        if (this.defaultListSize > this.totalQuotes) {
-            this.nextLoadCount = this.totalQuotes;
-            this.toRecords = this.totalQuotes;
-        }
-
-        for (let i = 0; i < this.nextLoadCount; i++) {
-            this.quotesToDisplay.push(this.myQuotes[i]);
-        }
-        if (this.quotesToDisplay.length) {
-            this.showQuotes = true;
-        }
-        if (this.totalQuotes > this.defaultListSize) {
-            this.isLoadMore = true;
-        }
+        this.applySegment('active');
     }
 
     handleExpiredQuotes(event) {
-        this.quotesToDisplay = [];
-        this.myQuotes = this.Quotes.filter(quote => quote.status === 'Expired');
-        this.totalQuotes = this.myQuotes.length;
-        
-        //update default size
-        this.nextLoadCount = this.defaultListSize;
-        if (this.defaultListSize > this.totalQuotes) {
-            this.nextLoadCount = this.totalQuotes;
-            this.toRecords = this.totalQuotes;
-        }
+        this.applySegment('expired');
+    }
 
-        for (let i = 0; i < this.nextLoadCount; i++) {
-            this.quotesToDisplay.push(this.myQuotes[i]);
+    // Format a value like "2025-06-12" or Date into "June 12, 2025"
+    formatDateForUI(value) {
+        if (!value) return '';
+        let d;
+        if (value instanceof Date) {
+            d = value;
+        } else {
+            // Accept ISO strings or other common formats
+            d = new Date(value);
         }
-        if (this.quotesToDisplay.length) {
-            this.showQuotes = true;
-        }
-        if (this.totalQuotes > this.defaultListSize) {
-            this.isLoadMore = true;
-        }
+        if (isNaN(d.getTime())) return '';
+
+        return d.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     }
 }
